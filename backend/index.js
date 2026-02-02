@@ -91,6 +91,49 @@ app.get("/fetchbyCategory/:type",(req,res)=>{
 })
 
 
+app.delete("/remove/:id",(req,res)=>{
+
+
+ const {id} =    req.params;
+
+
+ PM.deleteOne({_id:id})
+ .then(()=>{
+    res.send("Product was Removed")
+ })
+ .catch(()=>{
+    res.send("Error Occured While Removing Product")
+ })
+
+
+
+
+
+
+})
+
+
+app.patch("/edit/:id",(req,res)=>{
+
+
+
+  const   {p_name} = req.body
+
+const {id} = req.params
+
+PM.updateOne({_id:id},{p_name : p_name })
+.then(()=>{
+    res.send("Product Updated")
+})
+.catch(()=>{
+    res.send("Error to Edit ")
+})
+
+
+
+})
+
+
 
 
 app.listen(8000,()=>{
