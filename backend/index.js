@@ -91,7 +91,7 @@ app.get("/fetchbyCategory/:type",(req,res)=>{
 })
 
 
-app.delete("/remove/:id",(req,res)=>{
+app.delete("/remove/:id",(req,res)=>{ 
 
 
  const {id} =    req.params;
