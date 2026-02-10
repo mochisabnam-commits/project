@@ -11,7 +11,7 @@ export const Contact = () => {
         <div className="card-body">
           <h3 className="text-center mb-4">Contact Us</h3>
           <form>
-            {/* Name */}
+            {/* Name */}0
             <div className="mb-3">
               <label className="form-label">Full Name</label>
               <input type="text" className="form-control" placeholder="Enter your name" required />

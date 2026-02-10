@@ -1,12 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 import PM from "./model/Product.model.js";
+import cors from "cors";
+
+
+
+
 
 
 const app = express();
 
 app.use(express.json())
-
+app.use(cors())
 
 mongoose.connect("mongodb+srv://mochisabnam:mochisabnam@mochi.69xik9t.mongodb.net/Ecomm?appName=Mochi")
 .then(()=>{

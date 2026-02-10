@@ -1,6 +1,7 @@
 import React from 'react'
-import b1 from "../assets/b1.svg"
-import b2 from "../assets/b2.svg"
+import b1 from "../assets/e1.svg"
+import b2 from "../assets/e3.jpg"
+import b3 from "../assets/e4.svg"
 
 
 export const Coruselcom = () => {
@@ -27,7 +28,7 @@ export const Coruselcom = () => {
       </div>
     </div>
     <div className="carousel-item">
-      <img src="..." className="d-block w-100" alt="..." />
+      <img src={b3} className="d-block w-100" alt="..." />
       <div className="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>

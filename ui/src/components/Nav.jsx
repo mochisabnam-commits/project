@@ -24,10 +24,18 @@ export const Nav = () => {
           
            <Link to={"/product"}    className="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" >Product</Link>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
+            
+            <li>
+              <Link to={"/homeappliance"}   className="dropdown-item"  >Home Appliance</Link>
+            </li>
+           
+              <li>
+              <Link to={"/mobiles"}   className="dropdown-item"  >Mobiles</Link>
+            </li>
             <li><hr className="dropdown-divider" /></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+             <li>
+              <Link to={"/laptop"}   className="dropdown-item"  >Laptop</Link>
+            </li>
           </ul>
         </li>
         <li className="nav-item">
