@@ -1,33 +1,79 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export const Laptop = () => {
+  const [MO, setMO] = useState([]);
 
-  let [LA,setLA] = useState([])
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/fetchbyCategory/Laptop")
+      .then((res) => {
+        console.log(res.data);
+        setMO(res.data); // ✅ IMPORTANT
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []); // ✅ dependency array
 
-  useEffect(()=>{
-    axios.get("http://localhost:8000/fetchbyCategory/Laptop")
-    .then((data)=>{
 
-      console.log(data.data);
-    }
-  )
 
-  .catch((l)=>{
-     console.log(l);
+  const order = (p_id)=>{
+
+    axios.post(`http://localhost:8000/order/${p_id}`)
+    .then((res)=>{
+      alert(res.data)
+    })
+    .catch((e)=>{
+      alert(()=>{
+        "Error"
+      })
+    })
+
+
+
   }
-)
-
-  } )
-
-
-
-
-
-
 
   return (
-    <div>Laptop</div>
-  )
-}
+    <div className="container my-4">
+      <div className="row">
+        {MO.map((item) => (
+          <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={item._id}>
+            <div className="card h-100 shadow">
+              <img
+                src={item.p_img}
+                className="card-img-top img-fluid"
+                alt={item.p_name}
+                style={{
+                  height: "220px",
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
+
+              <div className="card-body">
+                <h5 className="card-title">{item.p_name}</h5>
+                <p className="text-muted">{item.category}</p>
+
+                <p className="card-text">{item.p_desc}</p>
+
+                <h6 className="text-success">₹{item.p_price}</h6>
+                <p>⭐ {item.rating}</p>
+
+                <ul className="list-group list-group-flush">
+                  {item.specification?.map((spec, index) => (
+                    <li className="list-group-item px-0" key={index}>
+                      ✔ {spec}
+                    </li>
+                  ))}
+                  <button className='btn btn-outline-primary'  onClick={()=>{order(item._id)}} >Add To Cart</button>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+

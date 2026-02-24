@@ -2,6 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import PM from "./model/Product.model.js";
 import cors from "cors";
+import contactModel from "./model/Contact.model.js";
+import Order from "./model/Cart.js";
+
 
 
 
@@ -137,6 +140,74 @@ PM.updateOne({_id:id},{p_name : p_name })
 
 
 })
+
+app.post("/contact",(req,res)=>{
+
+
+    contactModel.create(req.body)
+    .then(()=>{
+        res.send("Query Submitted")
+    })
+    .catch(()=>{
+        res.send("Failled")
+    })
+
+
+    
+
+
+
+
+})
+
+
+
+app.post("/order/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Order.create({
+      orderId: id   
+    });
+
+    res.send("Order Placed");
+  } catch (e) {
+    res.status(500).send("Error While Adding");
+  }
+});
+
+
+
+
+app.get("/fetchorder",async (req,res)=>{
+
+
+
+
+
+
+
+
+    const order =   await Order.find().populate("orderId");
+
+    console.log(order);
+    
+
+
+
+    res.send(order)
+
+
+
+
+
+})
+
+
+
+
+
+
 
 
 

@@ -4,6 +4,34 @@ import React, { useEffect, useState } from "react";
 export const Mobiles = () => {
   const [MO, setMO] = useState([]);
 
+
+
+
+    function storeDB(data){
+
+
+     axios.post("http://localhost:8000/order",data)
+    .then((d)=>{
+      alert("Order Placed")
+    })
+    .catch(()=>{
+      alert("Error in Placed Order")
+    })
+
+
+
+
+    
+    
+
+
+
+
+
+  }
+
+
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/fetchbyCategory/Mobile")
@@ -48,6 +76,7 @@ export const Mobiles = () => {
                       ✔ {spec}
                     </li>
                   ))}
+                  <button className='btn btn-outline-primary' onClick={()=>{storeDB(item)}}   >Add To Cart</button>
                 </ul>
               </div>
             </div>
@@ -57,3 +86,4 @@ export const Mobiles = () => {
     </div>
   );
 };
+

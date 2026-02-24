@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -38,6 +39,12 @@ export const Nav = () => {
             </li>
           </ul>
         </li>
+        <li>
+      
+         
+          <Link to={"/cart"} className="nav-link"  >Cart</Link>
+          
+        </li>
         <li className="nav-item">
          
           <Link to={"/contact"} className="nav-link"  >Contact</Link>
@@ -54,6 +61,11 @@ export const Nav = () => {
     </div>
   )
 }
+
+
+
+
+
 
 
 

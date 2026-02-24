@@ -60,6 +60,8 @@ export const Homeappliance = () => {
                       ✔ {spec}
                     </li>
                   ))}
+
+                  <button className='btn btn-outline-primary'>Add To Cart</button>
                 </ul>
               </div>
 
