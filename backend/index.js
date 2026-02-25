@@ -203,6 +203,22 @@ app.get("/fetchorder",async (req,res)=>{
 
 })
 
+app.delete("/remove/:id",(req,res)=>{
+
+     const {id} = req.params
+
+
+Order.findByIdAndDelete(id)
+.then(()=>{
+    res.send("Removed")
+})
+.catch(()=>{
+    res.send("Error While Removing")
+})
+
+
+})
+
 
 
 

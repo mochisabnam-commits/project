@@ -16,6 +16,22 @@ export const Cart = () => {
       });
   }, []);
 
+
+
+  const remove = (id)=>{
+
+    axios.delete(`http://localhost:8000/remove/${id}`)
+    .then((res)=>{
+      alert(res.data)
+    })
+    .catch(()=>{
+      alert("Error While Remove")
+    })
+
+
+
+  }
+
   return (
     <div className="container mt-4">
       <h3 className="mb-4">My Cart</h3>
@@ -60,7 +76,7 @@ export const Cart = () => {
                       ⭐ {product.rating}
                     </span>
 
-                    <button className="btn btn-danger btn-sm mt-auto">
+                    <button className="btn btn-danger btn-sm mt-auto" onClick={()=>{remove(product._id)}}>
                       Remove
                     </button>
                   </div>
